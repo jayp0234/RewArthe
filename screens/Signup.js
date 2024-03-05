@@ -14,10 +14,34 @@ import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox";
 import Button2 from "../components/Button2";
 import { LinearGradient } from "expo-linear-gradient";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../config/firebase";
+
 
 const Signup = ({ navigation }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+
+const handleSubmit = async () => {
+  if(email && password) {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigation.navigate("Login");
+    } catch (error) {
+      console.log('got error : ',error.message);
+    }
+  }
+}
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -48,11 +72,13 @@ const Signup = ({ navigation }) => {
                 placeholderTextColor={COLORS.black}
                 keyboardType="email-address"
                 style={styles.input}
+                value={email}
+                onChangeText={value => setEmail(value)} // Update email state
               />
             </View>
           </View>
 
-          <View style={styles.inputContainer}>
+          {/* <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Mobile Number</Text>
             <View
               style={[
@@ -78,9 +104,11 @@ const Signup = ({ navigation }) => {
                 placeholderTextColor={COLORS.black}
                 keyboardType="numeric"
                 style={{ width: "80%" }}
+                onChangeText={(text) => setPhoneNumber(text)} // Update this line
+                value={phoneNumber} // And this
               />
             </View>
-          </View>
+          </View> */}
 
           <View style={styles.inputContainer}>
             <Text style={styles.inputLabel}>Password</Text>
@@ -95,6 +123,8 @@ const Signup = ({ navigation }) => {
                 placeholderTextColor={COLORS.black}
                 secureTextEntry={!isPasswordShown}
                 style={styles.input}
+                value={password}
+                onChangeText={value => setPassword(value)} // Update password state 
               />
 
               <TouchableOpacity
@@ -120,7 +150,7 @@ const Signup = ({ navigation }) => {
             <Text>I agree to the terms and conditions</Text>
           </View>
 
-          <Button2 title="Sign Up" filled style={styles.signUpButton} />
+          <Button2 title="Sign Up" filled style={styles.signUpButton} onPress={handleSubmit}/>
 
           <View style={styles.orContainer}>
             <View style={styles.line} />
@@ -225,7 +255,7 @@ const styles = StyleSheet.create({
       width: 1,
       height: 2,
     },
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowRadius: 5,
   },
   input: {
@@ -250,7 +280,7 @@ const styles = StyleSheet.create({
       width: 1,
       height: 2,
     },
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowRadius: 5,
   },
   orContainer: {
@@ -286,7 +316,7 @@ const styles = StyleSheet.create({
       width: 1,
       height: 2,
     },
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowRadius: 5,
   },
   socialIcon: {
