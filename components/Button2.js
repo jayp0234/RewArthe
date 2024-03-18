@@ -28,13 +28,18 @@ const Button2 = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    paddingBottom: 16,
-    paddingVertical: 10,
+    paddingVertical: 20,
     borderColor: COLORS.bg,
     borderWidth: 2,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
+    shadowOffset: {
+      width: 1,
+      height: 2,
+      color: "black",
+    },
+    elevation: 8,
   },
 });
 export default Button2;

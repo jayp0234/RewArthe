@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Login, Signup, Welcome,Home } from "./screens";
+import { Login, Signup, Welcome, Home, TC, BarcodeScreen, ProfileScreen } from "./screens";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -8,10 +8,9 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
- 
 } from "firebase/auth";
 import useAuth from "./hooks/useAuth";
-import {auth} from "./config/firebase";
+import { auth } from "./config/firebase";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,20 +29,38 @@ export default function App() {
   if (user) {
     return (
       <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName='Home'
-        >
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
             component={Home}
             options={{
-              headerShown: false
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="BarcodeScreen"
+            component={BarcodeScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+           <Stack.Screen
+            name="ProfileScreen"
+            component={ProfileScreen}
+            options={{
+              headerShown: false,
             }}
           />
         </Stack.Navigator>
       </NavigationContainer>
     );
-
   } else {
     return (
       <NavigationContainer>
@@ -62,9 +79,17 @@ export default function App() {
               headerShown: false,
             }}
           />
+
           <Stack.Screen
             name="Signup"
             component={Signup}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="TC"
+            component={TC}
             options={{
               headerShown: false,
             }}

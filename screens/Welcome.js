@@ -6,40 +6,16 @@ import Button1 from "../components/Button1";
 
 const Welcome = ({ navigation }) => {
   return (
+    <View style={{flex:1}}>
     <LinearGradient
       style={{
         flex: 1,
       }}
       colors={[COLORS.secondary, COLORS.primary, COLORS.dark]}
     >
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, top: '15%'}}>
         <View>
-          <View
-            style={{
-              elevation: 8, // Android elevation
-              // iOS shadow properties
-              shadowColor: "#000",
-              shadowOffset: { width: 1, height: 4 },
-              shadowOpacity: 1,
-              shadowRadius: 5,
-              top: 30,
-              left: -10,
-              transform: [
-                { translateX: 50 },
-                { translateY: 50 },
-                { rotate: "20deg" },
-              ],
-            }}
-          >
-            <Image
-              source={require("../assets/images/front2.png")}
-              style={{
-                width: 150,
-                height: 150,
-                borderRadius: 20,
-              }}
-            />
-          </View>
+          
           <View
             style={{
               elevation: 8, // Android elevation
@@ -49,20 +25,20 @@ const Welcome = ({ navigation }) => {
               shadowOpacity: 0.3,
               shadowRadius: 5,
               position: "absolute",
-              top: 125,
-              left: 110,
-              transform: [
-                { translateX: 50 },
-                { translateY: 50 },
-                { rotate: "-20deg" },
-              ],
+              top: 20,
+              left: '15%',
+              // transform: [
+              //   { translateX: 50 },
+              //   { translateY: 60 },
+              //   { rotate: "0deg" },
+              // ],
             }}
           >
             <Image
               source={require("../assets/images/front3.png")}
               style={{
-                width: 200,
-                height: 200,
+                width: 300,
+                height: 300,
                 borderRadius: 20,
               }}
             />
@@ -170,6 +146,7 @@ const Welcome = ({ navigation }) => {
         </View>
       </View>
     </LinearGradient>
+    </View>
   );
 };
 

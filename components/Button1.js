@@ -28,10 +28,10 @@ const Button1 = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-    paddingBottom: 16,
-    paddingVertical: 14,
+    
+    paddingVertical: 20,
     borderColor: COLOURS.white,
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: 12,
     flex: 1,
     alignItems: "center",
