@@ -26,7 +26,7 @@ const Navbar = () => {
         <Tab
         icon="paid"
         text="History"
-        onPress={() => navigation.navigate("ProfileScreen")}
+        onPress={() => navigation.navigate("History")}
       />
       <Tab
         icon="person"

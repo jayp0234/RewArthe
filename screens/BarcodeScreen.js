@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   welcomeBar: {
-    top: "8%",
+    top: "7%",
     alignItems: "center",
   },
 

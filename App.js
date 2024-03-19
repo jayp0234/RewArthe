@@ -1,6 +1,15 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Login, Signup, Welcome, Home, TC, BarcodeScreen, ProfileScreen } from "./screens";
+import {
+  Login,
+  Signup,
+  Welcome,
+  Home,
+  TC,
+  BarcodeScreen,
+  ProfileScreen,
+  History,
+} from "./screens";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -51,9 +60,16 @@ export default function App() {
               headerShown: false,
             }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="ProfileScreen"
             component={ProfileScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="History"
+            component={History}
             options={{
               headerShown: false,
             }}

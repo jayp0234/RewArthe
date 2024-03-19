@@ -5,5 +5,6 @@ import Home from "./Home";
 import TC from "./TC";
 import BarcodeScreen from "./BarcodeScreen";
 import ProfileScreen from "./ProfileScreen";
+import History from "./History"
 
-export { Login, Signup, Welcome, Home, TC, BarcodeScreen, ProfileScreen };
+export { Login, Signup, Welcome, Home, TC, BarcodeScreen, ProfileScreen, History };
